@@ -17,7 +17,6 @@
         }
 
         /* --- LIVE NOTIFICATION SYSTEM --- */
-        /* Hidden by default, shown via JS when live */
         .live-banner {
             display: none; 
             background-color: #e91916;
@@ -31,7 +30,6 @@
         }
         .live-banner:hover { background-color: #c20e0b; }
         
-        /* The Status Dot in the Logo */
         .status-dot {
             height: 10px;
             width: 10px;
@@ -42,7 +40,6 @@
             transition: 0.3s;
         }
 
-        /* Styles applied when body has 'is-live' class */
         body.is-live .live-banner { display: block; }
         body.is-live .status-dot { 
             background-color: #e91916; /* Red = Live */
@@ -245,13 +242,11 @@
 
     <script>
         async function checkLiveStatus() {
-            // This API returns plain text. If offline, it says "jakub72 is offline". If live, it returns uptime.
             const url = 'https://decapi.me/twitch/uptime/jakub72';
             try {
                 const response = await fetch(url);
                 const text = await response.text();
                 
-                // If text does NOT contain "offline", you are live!
                 if (!text.includes('offline')) {
                     document.body.classList.add('is-live');
                 }
@@ -259,7 +254,6 @@
                 console.log('Status check skipped');
             }
         }
-        // Run check immediately
         checkLiveStatus();
     </script>
 

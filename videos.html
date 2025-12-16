@@ -88,18 +88,9 @@
         }
         .video-card:hover { transform: translateY(-5px); border-color: #9146FF; }
         
+        /* 16:9 Aspect Ratio Container for Iframes */
         .thumbnail-container { position: relative; width: 100%; padding-bottom: 56.25%; background: black; }
         .thumbnail-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-
-        /* Placeholder for tiny.cc links */
-        .thumbnail-placeholder {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: #26262c; display: flex; align-items: center; justify-content: center;
-            flex-direction: column;
-        }
-        .play-icon { font-size: 3rem; color: white; opacity: 0.8; }
-        .placeholder-text { margin-top: 10px; color: #adadb8; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; }
-        .video-card:hover .play-icon { color: #9146FF; }
 
         .video-info { padding: 15px; }
         .video-title { font-size: 1.1rem; font-weight: bold; margin-bottom: 8px; line-height: 1.4; color: #efeff1; }
@@ -140,126 +131,99 @@
                 </div>
                 <div class="video-info">
                     <div class="video-title">Metroid Prime 4: Beyond (SWITCH2)</div>
-                    <div class="video-meta"><span>Watch Series</span><span class="category-tag">Metroid</span></div>
+                    <div class="video-meta"><span>Playlist</span><span class="category-tag">Metroid</span></div>
                 </div>
             </div>
 
-            <a href="http://tiny.cc/MetroidPrime3Jakub72" target="_blank" class="video-card category-metroid">
+            <div class="video-card category-metroid">
                 <div class="thumbnail-container">
-                    <div class="thumbnail-placeholder">
-                        <span class="play-icon">▶</span>
-                        <span class="placeholder-text">Click to Watch</span>
-                    </div>
-                </div>
-                <div class="video-info">
-                    <div class="video-title">Metroid Prime 3 (Wii)</div>
-                    <div class="video-meta"><span>Watch on YouTube</span><span class="category-tag">Metroid</span></div>
-                </div>
-            </a>
-
-            <a href="http://tiny.cc/MetroidPrimeFFJakub72" target="_blank" class="video-card category-metroid">
-                <div class="thumbnail-container">
-                    <div class="thumbnail-placeholder">
-                        <span class="play-icon">▶</span>
-                        <span class="placeholder-text">Click to Watch</span>
-                    </div>
-                </div>
-                <div class="video-info">
-                    <div class="video-title">Metroid Prime Federation Force (3DS)</div>
-                    <div class="video-meta"><span>Watch on YouTube</span><span class="category-tag">Metroid</span></div>
-                </div>
-            </a>
-
-            <a href="http://tiny.cc/MetroidZeroMissionJakub72" target="_blank" class="video-card category-metroid">
-                <div class="thumbnail-container">
-                    <div class="thumbnail-placeholder">
-                        <span class="play-icon">▶</span>
-                        <span class="placeholder-text">Click to Watch</span>
-                    </div>
-                </div>
-                <div class="video-info">
-                    <div class="video-title">Metroid Zero Mission</div>
-                    <div class="video-meta"><span>Watch on YouTube</span><span class="category-tag">Metroid</span></div>
-                </div>
-            </a>
-
-            <a href="http://tiny.cc/MetroidOtherMJakub72" target="_blank" class="video-card category-metroid">
-                <div class="thumbnail-container">
-                    <div class="thumbnail-placeholder">
-                        <span class="play-icon">▶</span>
-                        <span class="placeholder-text">Click to Watch</span>
-                    </div>
-                </div>
-                <div class="video-info">
-                    <div class="video-title">Metroid Other M (Wii)</div>
-                    <div class="video-meta"><span>Watch on YouTube</span><span class="category-tag">Metroid</span></div>
-                </div>
-            </a>
-
-            <a href="http://tiny.cc/MetroidPrime2Jakub72" target="_blank" class="video-card category-metroid">
-                <div class="thumbnail-container">
-                    <div class="thumbnail-placeholder">
-                        <span class="play-icon">▶</span>
-                        <span class="placeholder-text">Click to Watch</span>
-                    </div>
-                </div>
-                <div class="video-info">
-                    <div class="video-title">Metroid Prime 2 (GC)</div>
-                    <div class="video-meta"><span>Watch on YouTube</span><span class="category-tag">Metroid</span></div>
-                </div>
-            </a>
-
-            <a href="http://tiny.cc/MetroidPrimeJakub72" target="_blank" class="video-card category-metroid">
-                <div class="thumbnail-container">
-                    <div class="thumbnail-placeholder">
-                        <span class="play-icon">▶</span>
-                        <span class="placeholder-text">Click to Watch</span>
-                    </div>
-                </div>
-                <div class="video-info">
-                    <div class="video-title">Metroid Prime (GC)</div>
-                    <div class="video-meta"><span>Watch on YouTube</span><span class="category-tag">Metroid</span></div>
-                </div>
-            </a>
-
-            <a href="http://tiny.cc/MetroidFusionJakub72" target="_blank" class="video-card category-metroid">
-                <div class="thumbnail-container">
-                    <div class="thumbnail-placeholder">
-                        <span class="play-icon">▶</span>
-                        <span class="placeholder-text">Click to Watch</span>
-                    </div>
-                </div>
-                <div class="video-info">
-                    <div class="video-title">Metroid Fusion (GBA)</div>
-                    <div class="video-meta"><span>Watch on YouTube</span><span class="category-tag">Metroid</span></div>
-                </div>
-            </a>
-
-            <a href="http://tiny.cc/MPDreadJakub72" target="_blank" class="video-card category-metroid">
-                <div class="thumbnail-container">
-                    <div class="thumbnail-placeholder">
-                        <span class="play-icon">▶</span>
-                        <span class="placeholder-text">Click to Watch</span>
-                    </div>
-                </div>
-                <div class="video-info">
-                    <div class="video-title">Metroid Dread (Switch)</div>
-                    <div class="video-meta"><span>Watch on YouTube</span><span class="category-tag">Metroid</span></div>
-                </div>
-            </a>
-
-            <a href="http://tiny.cc/MPReMasteredJakub72" target="_blank" class="video-card category-metroid">
-                <div class="thumbnail-container">
-                    <div class="thumbnail-placeholder">
-                        <span class="play-icon">▶</span>
-                        <span class="placeholder-text">Click to Watch</span>
-                    </div>
+                    <iframe src="http://tiny.cc/MPReMasteredJakub72" allowfullscreen></iframe>
                 </div>
                 <div class="video-info">
                     <div class="video-title">Metroid Prime Remastered</div>
-                    <div class="video-meta"><span>Watch on YouTube</span><span class="category-tag">Metroid</span></div>
+                    <div class="video-meta"><span>Switch</span><span class="category-tag">Metroid</span></div>
                 </div>
-            </a>
+            </div>
+
+            <div class="video-card category-metroid">
+                <div class="thumbnail-container">
+                    <iframe src="http://tiny.cc/MetroidPrimeJakub72" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">Metroid Prime (GC)</div>
+                    <div class="video-meta"><span>GameCube</span><span class="category-tag">Metroid</span></div>
+                </div>
+            </div>
+
+            <div class="video-card category-metroid">
+                <div class="thumbnail-container">
+                    <iframe src="http://tiny.cc/MetroidPrime2Jakub72" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">Metroid Prime 2: Echoes</div>
+                    <div class="video-meta"><span>GameCube</span><span class="category-tag">Metroid</span></div>
+                </div>
+            </div>
+
+            <div class="video-card category-metroid">
+                <div class="thumbnail-container">
+                    <iframe src="http://tiny.cc/MetroidPrime3Jakub72" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">Metroid Prime 3: Corruption</div>
+                    <div class="video-meta"><span>Wii</span><span class="category-tag">Metroid</span></div>
+                </div>
+            </div>
+
+            <div class="video-card category-metroid">
+                <div class="thumbnail-container">
+                    <iframe src="http://tiny.cc/MetroidOtherMJakub72" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">Metroid: Other M</div>
+                    <div class="video-meta"><span>Wii</span><span class="category-tag">Metroid</span></div>
+                </div>
+            </div>
+
+            <div class="video-card category-metroid">
+                <div class="thumbnail-container">
+                    <iframe src="http://tiny.cc/MetroidPrimeFFJakub72" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">Metroid Prime: Federation Force</div>
+                    <div class="video-meta"><span>3DS</span><span class="category-tag">Metroid</span></div>
+                </div>
+            </div>
+
+            <div class="video-card category-metroid">
+                <div class="thumbnail-container">
+                    <iframe src="http://tiny.cc/MPDreadJakub72" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">Metroid Dread</div>
+                    <div class="video-meta"><span>Switch</span><span class="category-tag">Metroid</span></div>
+                </div>
+            </div>
+
+            <div class="video-card category-metroid">
+                <div class="thumbnail-container">
+                    <iframe src="http://tiny.cc/MetroidFusionJakub72" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">Metroid Fusion</div>
+                    <div class="video-meta"><span>GBA</span><span class="category-tag">Metroid</span></div>
+                </div>
+            </div>
+
+            <div class="video-card category-metroid">
+                <div class="thumbnail-container">
+                    <iframe src="http://tiny.cc/MetroidZeroMissionJakub72" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">Metroid: Zero Mission</div>
+                    <div class="video-meta"><span>GBA</span><span class="category-tag">Metroid</span></div>
+                </div>
+            </div>
 
             <div class="video-card category-smm">
                 <div class="thumbnail-container">
@@ -267,7 +231,7 @@
                 </div>
                 <div class="video-info">
                     <div class="video-title">Slovak Mountain Man joins Patreon – Eps. 50</div>
-                    <div class="video-meta"><span>Video</span><span class="category-tag">SMM</span></div>
+                    <div class="video-meta"><span>Update</span><span class="category-tag">SMM</span></div>
                 </div>
             </div>
 
