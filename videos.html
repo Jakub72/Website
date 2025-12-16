@@ -66,14 +66,6 @@
         }
         .btn-live:hover { background-color: #772ce8; }
 
-        /* Mobile Nav */
-        @media (max-width: 600px) {
-            .logo { font-size: 1.1rem; margin-right: 15px; }
-            nav a { margin-right: 10px; font-size: 0.9rem; }
-            .btn-live { padding: 6px 10px; font-size: 0.8rem; }
-            header { padding: 0 15px; }
-        }
-
         /* VOD Content */
         .archive-container { padding: 40px 20px; max-width: 1200px; margin: 0 auto; width: 100%; }
         .page-title { font-size: 2rem; margin-bottom: 30px; text-align: center; }
@@ -86,15 +78,28 @@
         }
         .filter-btn:hover, .filter-btn.active { background-color: #9146FF; border-color: #9146FF; color: white; }
 
+        /* Grid */
         .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }
+
+        /* Standard Video Card */
         .video-card {
             background: #18181b; border: 1px solid #303032; border-radius: 8px;
-            overflow: hidden; transition: transform 0.2s;
+            overflow: hidden; transition: transform 0.2s; display: block; text-decoration: none;
         }
         .video-card:hover { transform: translateY(-5px); border-color: #9146FF; }
-
+        
         .thumbnail-container { position: relative; width: 100%; padding-bottom: 56.25%; background: black; }
         .thumbnail-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        /* Placeholder for tiny.cc links */
+        .thumbnail-placeholder {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #26262c; display: flex; align-items: center; justify-content: center;
+            flex-direction: column;
+        }
+        .play-icon { font-size: 3rem; color: white; opacity: 0.8; }
+        .placeholder-text { margin-top: 10px; color: #adadb8; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; }
+        .video-card:hover .play-icon { color: #9146FF; }
 
         .video-info { padding: 15px; }
         .video-title { font-size: 1.1rem; font-weight: bold; margin-bottom: 8px; line-height: 1.4; color: #efeff1; }
@@ -113,7 +118,7 @@
         <nav>
             <a href="index.html">Home</a>
             <a href="streams.html">Live</a>
-            <a href="videos.html" class="active">VODs</a>
+            <a href="videos.html" class="active">VOD Archive</a>
         </nav>
         <a href="streams.html" class="btn-live">Watch Live</a>
     </header>
@@ -123,20 +128,138 @@
 
         <div class="filter-bar">
             <button class="filter-btn active" onclick="filterSelection('all')">All Videos</button>
-            <button class="filter-btn" onclick="filterSelection('metroid')">Metroid Prime 4</button>
+            <button class="filter-btn" onclick="filterSelection('metroid')">Metroid Series</button>
             <button class="filter-btn" onclick="filterSelection('smm')">Slovak Mountain Man</button>
         </div>
 
         <div class="video-grid">
+            
             <div class="video-card category-metroid">
                 <div class="thumbnail-container">
                     <iframe src="https://www.youtube.com/embed/videoseries?list=PLHvfNVTz_9wLHagTO80AS_8_j3dfX5PxB" allowfullscreen></iframe>
                 </div>
                 <div class="video-info">
-                    <div class="video-title">Metroid Prime 4: Beyond (Full Playlist)</div>
-                    <div class="video-meta"><span>Dec 2025</span><span class="category-tag">Metroid Prime 4</span></div>
+                    <div class="video-title">Metroid Prime 4: Beyond (SWITCH2)</div>
+                    <div class="video-meta"><span>Watch Series</span><span class="category-tag">Metroid</span></div>
                 </div>
             </div>
+
+            <a href="http://tiny.cc/MetroidPrime3Jakub72" target="_blank" class="video-card category-metroid">
+                <div class="thumbnail-container">
+                    <div class="thumbnail-placeholder">
+                        <span class="play-icon">▶</span>
+                        <span class="placeholder-text">Click to Watch</span>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">Metroid Prime 3 (Wii)</div>
+                    <div class="video-meta"><span>Watch on YouTube</span><span class="category-tag">Metroid</span></div>
+                </div>
+            </a>
+
+            <a href="http://tiny.cc/MetroidPrimeFFJakub72" target="_blank" class="video-card category-metroid">
+                <div class="thumbnail-container">
+                    <div class="thumbnail-placeholder">
+                        <span class="play-icon">▶</span>
+                        <span class="placeholder-text">Click to Watch</span>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">Metroid Prime Federation Force (3DS)</div>
+                    <div class="video-meta"><span>Watch on YouTube</span><span class="category-tag">Metroid</span></div>
+                </div>
+            </a>
+
+            <a href="http://tiny.cc/MetroidZeroMissionJakub72" target="_blank" class="video-card category-metroid">
+                <div class="thumbnail-container">
+                    <div class="thumbnail-placeholder">
+                        <span class="play-icon">▶</span>
+                        <span class="placeholder-text">Click to Watch</span>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">Metroid Zero Mission</div>
+                    <div class="video-meta"><span>Watch on YouTube</span><span class="category-tag">Metroid</span></div>
+                </div>
+            </a>
+
+            <a href="http://tiny.cc/MetroidOtherMJakub72" target="_blank" class="video-card category-metroid">
+                <div class="thumbnail-container">
+                    <div class="thumbnail-placeholder">
+                        <span class="play-icon">▶</span>
+                        <span class="placeholder-text">Click to Watch</span>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">Metroid Other M (Wii)</div>
+                    <div class="video-meta"><span>Watch on YouTube</span><span class="category-tag">Metroid</span></div>
+                </div>
+            </a>
+
+            <a href="http://tiny.cc/MetroidPrime2Jakub72" target="_blank" class="video-card category-metroid">
+                <div class="thumbnail-container">
+                    <div class="thumbnail-placeholder">
+                        <span class="play-icon">▶</span>
+                        <span class="placeholder-text">Click to Watch</span>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">Metroid Prime 2 (GC)</div>
+                    <div class="video-meta"><span>Watch on YouTube</span><span class="category-tag">Metroid</span></div>
+                </div>
+            </a>
+
+            <a href="http://tiny.cc/MetroidPrimeJakub72" target="_blank" class="video-card category-metroid">
+                <div class="thumbnail-container">
+                    <div class="thumbnail-placeholder">
+                        <span class="play-icon">▶</span>
+                        <span class="placeholder-text">Click to Watch</span>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">Metroid Prime (GC)</div>
+                    <div class="video-meta"><span>Watch on YouTube</span><span class="category-tag">Metroid</span></div>
+                </div>
+            </a>
+
+            <a href="http://tiny.cc/MetroidFusionJakub72" target="_blank" class="video-card category-metroid">
+                <div class="thumbnail-container">
+                    <div class="thumbnail-placeholder">
+                        <span class="play-icon">▶</span>
+                        <span class="placeholder-text">Click to Watch</span>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">Metroid Fusion (GBA)</div>
+                    <div class="video-meta"><span>Watch on YouTube</span><span class="category-tag">Metroid</span></div>
+                </div>
+            </a>
+
+            <a href="http://tiny.cc/MPDreadJakub72" target="_blank" class="video-card category-metroid">
+                <div class="thumbnail-container">
+                    <div class="thumbnail-placeholder">
+                        <span class="play-icon">▶</span>
+                        <span class="placeholder-text">Click to Watch</span>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">Metroid Dread (Switch)</div>
+                    <div class="video-meta"><span>Watch on YouTube</span><span class="category-tag">Metroid</span></div>
+                </div>
+            </a>
+
+            <a href="http://tiny.cc/MPReMasteredJakub72" target="_blank" class="video-card category-metroid">
+                <div class="thumbnail-container">
+                    <div class="thumbnail-placeholder">
+                        <span class="play-icon">▶</span>
+                        <span class="placeholder-text">Click to Watch</span>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">Metroid Prime Remastered</div>
+                    <div class="video-meta"><span>Watch on YouTube</span><span class="category-tag">Metroid</span></div>
+                </div>
+            </a>
 
             <div class="video-card category-smm">
                 <div class="thumbnail-container">
@@ -144,9 +267,10 @@
                 </div>
                 <div class="video-info">
                     <div class="video-title">Slovak Mountain Man joins Patreon – Eps. 50</div>
-                    <div class="video-meta"><span>Dec 2025</span><span class="category-tag">SMM</span></div>
+                    <div class="video-meta"><span>Video</span><span class="category-tag">SMM</span></div>
                 </div>
             </div>
+
         </div>
     </div>
 
@@ -166,7 +290,6 @@
         }
         filterSelection('all');
 
-        // LIVE CHECK SCRIPT
         async function checkLiveStatus() {
             const url = 'https://decapi.me/twitch/uptime/jakub72';
             try {

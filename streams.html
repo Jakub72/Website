@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jakub72 | Live Dashboard</title>
     <style>
-        /* --- VISUAL DESIGN --- */
+        /* --- VISUAL DESIGN (DARK MODE) --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -66,18 +66,10 @@
         }
         .btn-live:hover { background-color: #772ce8; }
 
-        /* Mobile Nav */
-        @media (max-width: 600px) {
-            .logo { font-size: 1.1rem; margin-right: 15px; }
-            nav a { margin-right: 10px; font-size: 0.9rem; }
-            .btn-live { padding: 6px 10px; font-size: 0.8rem; }
-            header { padding: 0 15px; }
-        }
-
         /* Dashboard */
         .dashboard-container {
             display: flex; flex-direction: column;
-            height: calc(100vh - 60px); /* Fill remaining screen */
+            height: calc(100vh - 60px);
         }
         .stream-tabs {
             display: flex; background: #1f1f23; padding: 0 20px;
@@ -106,7 +98,6 @@
             .stream-content.active { flex-direction: column; overflow-y: auto; }
             .video-area { height: 56.25vw; flex: none; }
             .chat-area { width: 100%; height: 500px; border-left: none; }
-            /* Adjust height on mobile to account for banner if active */
             body.is-live .dashboard-container { height: auto; flex: 1; }
         }
     </style>
@@ -122,8 +113,7 @@
         <nav>
             <a href="index.html">Home</a>
             <a href="streams.html" class="active">Live</a>
-            <a href="videos.html">VODs</a>
-        </nav>
+            <a href="videos.html">VOD Archive</a> </nav>
         <a href="streams.html" class="btn-live">Watch Live</a>
     </header>
 
@@ -170,7 +160,6 @@
             btnElement.classList.add("active");
         }
 
-        // LIVE CHECK SCRIPT
         async function checkLiveStatus() {
             const url = 'https://decapi.me/twitch/uptime/jakub72';
             try {
