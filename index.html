@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jakub72 | Home</title>
     <style>
-        /* --- VISUAL DESIGN --- */
+        /* --- VISUAL DESIGN (DARK MODE) --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -13,10 +13,10 @@
             color: white;
             display: flex;
             flex-direction: column;
-            height: 100vh;
+            min-height: 100vh;
         }
 
-        /* Header */
+        /* --- Header Navigation --- */
         header {
             background-color: #18181b;
             height: 60px;
@@ -24,6 +24,10 @@
             align-items: center;
             padding: 0 30px;
             border-bottom: 1px solid #303032;
+            flex-shrink: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         .logo {
             font-weight: 800;
@@ -43,29 +47,115 @@
         }
         nav a:hover, nav a.active { color: #9146FF; }
 
-        /* Hero Section */
-        .hero-section {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: radial-gradient(circle at center, #26262c 0%, #0e0e10 100%);
-            padding: 20px;
-        }
-        .hero-title { font-size: 3rem; margin-bottom: 20px; }
-        .hero-btn {
+        /* Watch Live Button in Header */
+        .btn-live {
+            margin-left: auto;
             background-color: #9146FF;
             color: white;
-            padding: 15px 30px;
+            padding: 8px 16px;
             text-decoration: none;
             border-radius: 4px;
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 0.9rem;
             transition: background 0.2s;
         }
-        .hero-btn:hover { background-color: #772ce8; }
+        .btn-live:hover { background-color: #772ce8; }
+
+
+        /* --- Main Content Section --- */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: radial-gradient(circle at top center, #26262c 0%, #0e0e10 60%);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        /* Featured Video Area */
+        .video-container {
+            width: 100%;
+            max-width: 900px;
+            background: #000;
+            border: 1px solid #303032;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            margin-bottom: 40px;
+        }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Description Text */
+        .description-box {
+            max-width: 800px;
+            line-height: 1.6;
+            color: #e0e0e0;
+            margin-bottom: 40px;
+            text-align: left;
+            background: rgba(255,255,255,0.03);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #303032;
+        }
+        .description-box p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        .highlight {
+            color: #9146FF;
+            font-weight: bold;
+        }
+
+        /* Links Grid */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 30px;
+        }
+        .link-card {
+            background: #1f1f23;
+            padding: 15px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: transform 0.2s, background 0.2s;
+            border: 1px solid #303032;
+        }
+        .link-card:hover {
+            background: #26262c;
+            transform: translateY(-2px);
+            border-color: #9146FF;
+        }
+        .link-label { color: #adadb8; font-size: 0.9rem; font-weight: normal; }
+
+        /* Footer Message */
+        .footer-message {
+            color: #adadb8;
+            font-style: italic;
+            margin-top: 20px;
+            font-size: 0.95rem;
+        }
+
     </style>
 </head>
 <body>
@@ -76,14 +166,62 @@
             <a href="index.html" class="active">Home</a>
             <a href="streams.html">Live Streams</a>
         </nav>
+        <a href="streams.html" class="btn-live">Watch Live</a>
     </header>
 
-    <div class="hero-section">
-        <h1 class="hero-title">Welcome to the Stream</h1>
-        <p style="color: #adadb8; margin-bottom: 40px; font-size: 1.2rem;">
-            Web Development, Gaming, and Tech.
-        </p>
-        <a href="streams.html" class="hero-btn">Watch Live</a>
+    <div class="main-content">
+        
+        <div class="video-container">
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/VjQBPD7XlM4" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <div class="description-box">
+            <h1 style="margin-bottom: 20px; font-size: 2rem; color: white; text-align: center;">Welcome to the Channel</h1>
+            <p>
+                Are you visiting my website because I’ve made you laugh, felt inspired, or you just want to learn more about the Slovak Mountain Man? Then you’re in for a treat as there are thousands of hours worth of videos all available to enjoy right here.
+            </p>
+            <p>
+                But for those that believe in my dream from the above video, and want to go one step further in making it come true… then <span class="highlight">support my Patreon</span>. Pledge whatever you feel my work deserves as any contribution is welcome. 
+            </p>
+            <p style="margin-bottom: 0;">
+                As a Bonus, sign up during one of my Live Streams and I’ll personally Thank You for directly impacting me as a creator.
+            </p>
+        </div>
+
+        <div class="links-grid">
+            <a href="https://www.patreon.com/Jakub72" target="_blank" class="link-card" style="border-color: #f96854;">
+                <span>Support my Patreon</span> <span>➔</span>
+            </a>
+            <a href="https://ko-fi.com/jakub72" target="_blank" class="link-card" style="border-color: #29abe0;">
+                <span>Ko-fi</span> <span>➔</span>
+            </a>
+            <a href="https://linktr.ee/Jakub72" target="_blank" class="link-card">
+                <span>My Socials</span> <span>➔</span>
+            </a>
+            <a href="https://thronegifts.com/u/jakub72" target="_blank" class="link-card">
+                <span>Send Me A Gift</span> <span>➔</span>
+            </a>
+            <a href="http://tiny.cc/TwitchCommandsJakub72" target="_blank" class="link-card">
+                <span>Stream Commands</span> <span>➔</span>
+            </a>
+            <a href="https://kit.co/SlovakMountainMan" target="_blank" class="link-card">
+                <span>My Video Equipment</span> <span>➔</span>
+            </a>
+            <a href="http://tiny.cc/FAQJakub72" target="_blank" class="link-card">
+                <span>FAQ</span> <span>➔</span>
+            </a>
+        </div>
+
+        <div class="footer-message">
+            Thank You to all Patrons past, future, and present for your continuous support ♡
+        </div>
+
     </div>
 
 </body>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jakub72 | Live Dashboard</title>
     <style>
-        /* --- VISUAL DESIGN --- */
+        /* --- VISUAL DESIGN (DARK MODE) --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -17,7 +17,7 @@
             overflow: hidden;
         }
 
-        /* Header */
+        /* Header Navigation */
         header {
             background-color: #18181b;
             height: 60px;
@@ -45,14 +45,14 @@
         }
         nav a:hover, nav a.active { color: #9146FF; }
 
-        /* Dashboard Layout */
+        /* Dashboard Container */
         .dashboard-container {
             display: flex;
             flex-direction: column;
             height: calc(100vh - 60px);
         }
 
-        /* Tabs */
+        /* Platform Tabs */
         .stream-tabs {
             display: flex;
             background: #1f1f23;
@@ -81,7 +81,7 @@
             color: #9146FF;
         }
 
-        /* Content Area */
+        /* Content Areas */
         .stream-content {
             display: none;
             flex: 1;
@@ -103,7 +103,7 @@
         }
         iframe { width: 100%; height: 100%; border: none; }
 
-        /* Mobile */
+        /* Mobile Responsiveness */
         @media (max-width: 900px) {
             .stream-content.active { flex-direction: column; overflow-y: auto; }
             .video-area { height: 56.25vw; flex: none; }
@@ -131,13 +131,13 @@
         <div id="twitch" class="stream-content active">
             <div class="video-area">
                 <iframe
-                    src="https://player.twitch.tv/?channel=jakub72&parent=localhost&muted=false"
+                    src="https://player.twitch.tv/?channel=jakub72&parent=jakub72.github.io&parent=localhost&muted=false"
                     allowfullscreen>
                 </iframe>
             </div>
             <div class="chat-area">
                 <iframe
-                    src="https://www.twitch.tv/embed/jakub72/chat?parent=localhost&darkpopout">
+                    src="https://www.twitch.tv/embed/jakub72/chat?parent=jakub72.github.io&parent=localhost&darkpopout">
                 </iframe>
             </div>
         </div>
@@ -145,7 +145,7 @@
         <div id="youtube" class="stream-content">
             <div class="video-area">
                 <iframe 
-                    src="https://www.youtube.com/embed/live_stream?channel=UCrMt-dpw8V-wpD0RXhZDSlA" 
+                    src="https://www.youtube.com/embed/live_stream?channel=UCYHyTwKLVqXlJBiDwcA928Q" 
                     allowfullscreen>
                 </iframe>
             </div>
