@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jakub72 | Home</title>
+    <style>
+        /* --- VISUAL DESIGN --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #0e0e10; /* Twitch Dark Background */
+            color: white;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        /* Header */
+        header {
+            background-color: #18181b;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            padding: 0 30px;
+            border-bottom: 1px solid #303032;
+        }
+        .logo {
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: #efeff1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-right: 40px;
+            text-decoration: none;
+        }
+        nav a {
+            color: #adadb8;
+            text-decoration: none;
+            font-weight: 600;
+            margin-right: 25px;
+            transition: color 0.2s;
+        }
+        nav a:hover, nav a.active { color: #9146FF; }
+
+        /* Hero Section */
+        .hero-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #26262c 0%, #0e0e10 100%);
+            padding: 20px;
+        }
+        .hero-title { font-size: 3rem; margin-bottom: 20px; }
+        .hero-btn {
+            background-color: #9146FF;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background 0.2s;
+        }
+        .hero-btn:hover { background-color: #772ce8; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">Jakub72</a>
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="streams.html">Live Streams</a>
+        </nav>
+    </header>
+
+    <div class="hero-section">
+        <h1 class="hero-title">Welcome to the Stream</h1>
+        <p style="color: #adadb8; margin-bottom: 40px; font-size: 1.2rem;">
+            Web Development, Gaming, and Tech.
+        </p>
+        <a href="streams.html" class="hero-btn">Watch Live</a>
+    </div>
+
+</body>
+</html>
