@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jakub72 | Live Dashboard</title>
     <style>
-        /* --- VISUAL DESIGN (DARK MODE) --- */
+        /* --- VISUAL DESIGN --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -17,7 +17,28 @@
             overflow: hidden;
         }
 
-        /* Header Navigation */
+        /* --- LIVE NOTIFICATION --- */
+        .live-banner {
+            display: none; 
+            background-color: #e91916;
+            color: white;
+            text-align: center;
+            padding: 8px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+        .status-dot {
+            height: 10px; width: 10px;
+            background-color: #555;
+            border-radius: 50%;
+            display: inline-block; margin-right: 8px;
+            transition: 0.3s;
+        }
+        body.is-live .live-banner { display: block; }
+        body.is-live .status-dot { background-color: #e91916; box-shadow: 0 0 8px #e91916; }
+
+        /* Header */
         header {
             background-color: #18181b;
             height: 60px;
@@ -28,98 +49,85 @@
             flex-shrink: 0;
         }
         .logo {
-            font-weight: 800;
-            font-size: 1.4rem;
-            color: #efeff1;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-right: 40px;
-            text-decoration: none;
+            font-weight: 800; font-size: 1.4rem; color: #efeff1;
+            text-transform: uppercase; letter-spacing: 1px;
+            margin-right: 40px; text-decoration: none;
+            display: flex; align-items: center;
         }
         nav a {
-            color: #adadb8;
-            text-decoration: none;
-            font-weight: 600;
-            margin-right: 25px;
-            transition: color 0.2s;
+            color: #adadb8; text-decoration: none; font-weight: 600;
+            margin-right: 25px; transition: color 0.2s;
         }
         nav a:hover, nav a.active { color: #9146FF; }
+        .btn-live {
+            margin-left: auto; background-color: #9146FF; color: white;
+            padding: 8px 16px; text-decoration: none; border-radius: 4px;
+            font-weight: bold; font-size: 0.9rem; transition: background 0.2s;
+        }
+        .btn-live:hover { background-color: #772ce8; }
 
-        /* Dashboard Container */
-        .dashboard-container {
-            display: flex;
-            flex-direction: column;
-            height: calc(100vh - 60px);
+        /* Mobile Nav */
+        @media (max-width: 600px) {
+            .logo { font-size: 1.1rem; margin-right: 15px; }
+            nav a { margin-right: 10px; font-size: 0.9rem; }
+            .btn-live { padding: 6px 10px; font-size: 0.8rem; }
+            header { padding: 0 15px; }
         }
 
-        /* Platform Tabs */
+        /* Dashboard */
+        .dashboard-container {
+            display: flex; flex-direction: column;
+            height: calc(100vh - 60px); /* Fill remaining screen */
+        }
         .stream-tabs {
-            display: flex;
-            background: #1f1f23;
-            padding: 0 20px;
-            height: 50px;
-            align-items: center;
-            border-bottom: 1px solid #000;
+            display: flex; background: #1f1f23; padding: 0 20px;
+            height: 50px; align-items: center; border-bottom: 1px solid #000;
         }
         .tab-btn {
-            background: transparent;
-            border: none;
-            color: #efeff1;
-            padding: 0 20px;
-            height: 100%;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 1rem;
-            border-bottom: 2px solid transparent;
-            opacity: 0.6;
-            transition: 0.2s;
+            background: transparent; border: none; color: #efeff1;
+            padding: 0 20px; height: 100%; cursor: pointer;
+            font-weight: bold; font-size: 1rem; border-bottom: 2px solid transparent;
+            opacity: 0.6; transition: 0.2s;
         }
         .tab-btn:hover { opacity: 1; background-color: #26262c; }
-        .tab-btn.active {
-            border-bottom: 2px solid #9146FF;
-            opacity: 1;
-            color: #9146FF;
-        }
+        .tab-btn.active { border-bottom: 2px solid #9146FF; opacity: 1; color: #9146FF; }
 
-        /* Content Areas */
-        .stream-content {
-            display: none;
-            flex: 1;
-            height: 100%;
-        }
-        .stream-content.active {
-            display: flex;
-        }
+        .stream-content { display: none; flex: 1; height: 100%; }
+        .stream-content.active { display: flex; }
 
-        .video-area {
-            flex: 1;
-            background: black;
-            position: relative;
-        }
-        .chat-area {
-            width: 350px;
-            background: #18181b;
-            border-left: 1px solid #303032;
-        }
+        .video-area { flex: 1; background: black; position: relative; }
+        .chat-area { width: 350px; background: #18181b; border-left: 1px solid #303032; }
         iframe { width: 100%; height: 100%; border: none; }
 
-        /* Mobile Responsiveness */
+        #local-warning { display: none; background: #eb0400; color: white; text-align: center; padding: 10px; }
+
+        /* Mobile Dashboard */
         @media (max-width: 900px) {
             .stream-content.active { flex-direction: column; overflow-y: auto; }
             .video-area { height: 56.25vw; flex: none; }
             .chat-area { width: 100%; height: 500px; border-left: none; }
+            /* Adjust height on mobile to account for banner if active */
+            body.is-live .dashboard-container { height: auto; flex: 1; }
         }
     </style>
 </head>
 <body>
 
+    <a href="streams.html" class="live-banner">
+        🔴 YOU ARE WATCHING LIVE
+    </a>
+
     <header>
-        <a href="index.html" class="logo">Jakub72</a>
+        <a href="index.html" class="logo"><span class="status-dot"></span> Jakub72</a>
         <nav>
             <a href="index.html">Home</a>
-            <a href="streams.html" class="active">Live Streams</a>
+            <a href="streams.html" class="active">Live</a>
+            <a href="videos.html">VODs</a>
         </nav>
+        <a href="streams.html" class="btn-live">Watch Live</a>
     </header>
+
+    <div id="local-warning">⚠️ Twitch Embeds do NOT work via local files. Upload to GitHub.</div>
 
     <div class="dashboard-container">
         
@@ -130,24 +138,16 @@
 
         <div id="twitch" class="stream-content active">
             <div class="video-area">
-                <iframe
-                    src="https://player.twitch.tv/?channel=jakub72&parent=jakub72.github.io&parent=localhost&muted=false"
-                    allowfullscreen>
-                </iframe>
+                <iframe src="https://player.twitch.tv/?channel=jakub72&parent=jakub72.github.io&parent=localhost&parent=127.0.0.1&muted=false" allowfullscreen></iframe>
             </div>
             <div class="chat-area">
-                <iframe
-                    src="https://www.twitch.tv/embed/jakub72/chat?parent=jakub72.github.io&parent=localhost&darkpopout">
-                </iframe>
+                <iframe src="https://www.twitch.tv/embed/jakub72/chat?parent=jakub72.github.io&parent=localhost&parent=127.0.0.1&darkpopout"></iframe>
             </div>
         </div>
 
         <div id="youtube" class="stream-content">
             <div class="video-area">
-                <iframe 
-                    src="https://www.youtube.com/embed/live_stream?channel=UCYHyTwKLVqXlJBiDwcA928Q" 
-                    allowfullscreen>
-                </iframe>
+                <iframe src="https://www.youtube.com/embed/live_stream?channel=UCYHyTwKLVqXlJBiDwcA928Q" allowfullscreen></iframe>
             </div>
             <div class="chat-area" style="display:flex; align-items:center; justify-content:center; text-align:center; padding:20px;">
                 <p style="color:#adadb8;">YouTube Chat is only available on YouTube.com</p>
@@ -157,21 +157,31 @@
     </div>
 
     <script>
+        if (window.location.protocol === 'file:') document.getElementById('local-warning').style.display = 'block';
+
         function openPlatform(platformName, btnElement) {
-            // Hide all content divs
             var contents = document.getElementsByClassName("stream-content");
-            for (var i = 0; i < contents.length; i++) {
-                contents[i].classList.remove("active");
-            }
-            // Deactivate all buttons
+            for (var i = 0; i < contents.length; i++) contents[i].classList.remove("active");
+            
             var buttons = document.getElementsByClassName("tab-btn");
-            for (var i = 0; i < buttons.length; i++) {
-                buttons[i].classList.remove("active");
-            }
-            // Show selected content and activate button
+            for (var i = 0; i < buttons.length; i++) buttons[i].classList.remove("active");
+            
             document.getElementById(platformName).classList.add("active");
             btnElement.classList.add("active");
         }
+
+        // LIVE CHECK SCRIPT
+        async function checkLiveStatus() {
+            const url = 'https://decapi.me/twitch/uptime/jakub72';
+            try {
+                const response = await fetch(url);
+                const text = await response.text();
+                if (!text.includes('offline')) {
+                    document.body.classList.add('is-live');
+                }
+            } catch (err) {}
+        }
+        checkLiveStatus();
     </script>
 
 </body>

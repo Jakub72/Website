@@ -9,11 +9,44 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #0e0e10; /* Twitch Dark Background */
+            background-color: #0e0e10;
             color: white;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+        }
+
+        /* --- LIVE NOTIFICATION SYSTEM --- */
+        /* Hidden by default, shown via JS when live */
+        .live-banner {
+            display: none; 
+            background-color: #e91916;
+            color: white;
+            text-align: center;
+            padding: 8px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+        }
+        .live-banner:hover { background-color: #c20e0b; }
+        
+        /* The Status Dot in the Logo */
+        .status-dot {
+            height: 10px;
+            width: 10px;
+            background-color: #555; /* Grey = Offline */
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+            transition: 0.3s;
+        }
+
+        /* Styles applied when body has 'is-live' class */
+        body.is-live .live-banner { display: block; }
+        body.is-live .status-dot { 
+            background-color: #e91916; /* Red = Live */
+            box-shadow: 0 0 8px #e91916;
         }
 
         /* --- Header Navigation --- */
@@ -37,6 +70,8 @@
             letter-spacing: 1px;
             margin-right: 40px;
             text-decoration: none;
+            display: flex;
+            align-items: center;
         }
         nav a {
             color: #adadb8;
@@ -47,7 +82,6 @@
         }
         nav a:hover, nav a.active { color: #9146FF; }
 
-        /* Watch Live Button in Header */
         .btn-live {
             margin-left: auto;
             background-color: #9146FF;
@@ -61,8 +95,15 @@
         }
         .btn-live:hover { background-color: #772ce8; }
 
+        /* --- Mobile Nav adjustments --- */
+        @media (max-width: 600px) {
+            .logo { font-size: 1.1rem; margin-right: 15px; }
+            nav a { margin-right: 10px; font-size: 0.9rem; }
+            .btn-live { padding: 6px 10px; font-size: 0.8rem; }
+            header { padding: 0 15px; }
+        }
 
-        /* --- Main Content Section --- */
+        /* --- Main Content --- */
         .main-content {
             flex: 1;
             display: flex;
@@ -73,7 +114,7 @@
             text-align: center;
         }
 
-        /* Featured Video Area */
+        /* Video Container */
         .video-container {
             width: 100%;
             max-width: 900px;
@@ -86,19 +127,14 @@
         }
         .video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%;
             height: 0;
         }
         .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;
         }
 
-        /* Description Text */
+        /* Description Box */
         .description-box {
             max-width: 800px;
             line-height: 1.6;
@@ -110,14 +146,8 @@
             border-radius: 8px;
             border: 1px solid #303032;
         }
-        .description-box p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-        }
-        .highlight {
-            color: #9146FF;
-            font-weight: bold;
-        }
+        .description-box p { margin-bottom: 20px; font-size: 1.1rem; }
+        .highlight { color: #9146FF; font-weight: bold; }
 
         /* Links Grid */
         .links-grid {
@@ -141,30 +171,30 @@
             transition: transform 0.2s, background 0.2s;
             border: 1px solid #303032;
         }
-        .link-card:hover {
-            background: #26262c;
-            transform: translateY(-2px);
-            border-color: #9146FF;
-        }
-        .link-label { color: #adadb8; font-size: 0.9rem; font-weight: normal; }
+        .link-card:hover { background: #26262c; transform: translateY(-2px); border-color: #9146FF; }
 
-        /* Footer Message */
         .footer-message {
             color: #adadb8;
             font-style: italic;
             margin-top: 20px;
             font-size: 0.95rem;
         }
-
     </style>
 </head>
 <body>
 
+    <a href="streams.html" class="live-banner">
+        🔴 JAKUB72 IS LIVE NOW! CLICK TO WATCH
+    </a>
+
     <header>
-        <a href="index.html" class="logo">Jakub72</a>
+        <a href="index.html" class="logo">
+            <span class="status-dot"></span> Jakub72
+        </a>
         <nav>
             <a href="index.html" class="active">Home</a>
-            <a href="streams.html">Live Streams</a>
+            <a href="streams.html">Live</a>
+            <a href="videos.html">VODs</a>
         </nav>
         <a href="streams.html" class="btn-live">Watch Live</a>
     </header>
@@ -173,25 +203,15 @@
         
         <div class="video-container">
             <div class="video-wrapper">
-                <iframe 
-                    src="https://www.youtube.com/embed/VjQBPD7XlM4" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
+                <iframe src="https://www.youtube.com/embed/VjQBPD7XlM4" allowfullscreen></iframe>
             </div>
         </div>
 
         <div class="description-box">
             <h1 style="margin-bottom: 20px; font-size: 2rem; color: white; text-align: center;">Welcome to the Channel</h1>
-            <p>
-                Are you visiting my website because I’ve made you laugh, felt inspired, or you just want to learn more about the Slovak Mountain Man? Then you’re in for a treat as there are thousands of hours worth of videos all available to enjoy right here.
-            </p>
-            <p>
-                But for those that believe in my dream from the above video, and want to go one step further in making it come true… then <span class="highlight">support my Patreon</span>. Pledge whatever you feel my work deserves as any contribution is welcome. 
-            </p>
-            <p style="margin-bottom: 0;">
-                As a Bonus, sign up during one of my Live Streams and I’ll personally Thank You for directly impacting me as a creator.
-            </p>
+            <p>Are you visiting my website because I’ve made you laugh, felt inspired, or you just want to learn more about the Slovak Mountain Man? Then you’re in for a treat as there are thousands of hours worth of videos all available to enjoy right here.</p>
+            <p>But for those that believe in my dream from the above video, and want to go one step further in making it come true… then <span class="highlight">support my Patreon</span>. Pledge whatever you feel my work deserves as any contribution is welcome.</p>
+            <p style="margin-bottom: 0;">As a Bonus, sign up during one of my Live Streams and I’ll personally Thank You for directly impacting me as a creator.</p>
         </div>
 
         <div class="links-grid">
@@ -221,8 +241,27 @@
         <div class="footer-message">
             Thank You to all Patrons past, future, and present for your continuous support ♡
         </div>
-
     </div>
+
+    <script>
+        async function checkLiveStatus() {
+            // This API returns plain text. If offline, it says "jakub72 is offline". If live, it returns uptime.
+            const url = 'https://decapi.me/twitch/uptime/jakub72';
+            try {
+                const response = await fetch(url);
+                const text = await response.text();
+                
+                // If text does NOT contain "offline", you are live!
+                if (!text.includes('offline')) {
+                    document.body.classList.add('is-live');
+                }
+            } catch (err) {
+                console.log('Status check skipped');
+            }
+        }
+        // Run check immediately
+        checkLiveStatus();
+    </script>
 
 </body>
 </html>

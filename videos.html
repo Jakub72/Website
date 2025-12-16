@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jakub72 | VOD Archive</title>
+    <style>
+        /* --- VISUAL DESIGN --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #0e0e10;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- LIVE NOTIFICATION --- */
+        .live-banner {
+            display: none; 
+            background-color: #e91916;
+            color: white;
+            text-align: center;
+            padding: 8px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+        .status-dot {
+            height: 10px; width: 10px;
+            background-color: #555;
+            border-radius: 50%;
+            display: inline-block; margin-right: 8px;
+            transition: 0.3s;
+        }
+        body.is-live .live-banner { display: block; }
+        body.is-live .status-dot { background-color: #e91916; box-shadow: 0 0 8px #e91916; }
+
+        /* Header */
+        header {
+            background-color: #18181b;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            padding: 0 30px;
+            border-bottom: 1px solid #303032;
+            flex-shrink: 0;
+            position: sticky; top: 0; z-index: 100;
+        }
+        .logo {
+            font-weight: 800; font-size: 1.4rem; color: #efeff1;
+            text-transform: uppercase; letter-spacing: 1px;
+            margin-right: 40px; text-decoration: none;
+            display: flex; align-items: center;
+        }
+        nav a {
+            color: #adadb8; text-decoration: none; font-weight: 600;
+            margin-right: 25px; transition: color 0.2s;
+        }
+        nav a:hover, nav a.active { color: #9146FF; }
+        .btn-live {
+            margin-left: auto; background-color: #9146FF; color: white;
+            padding: 8px 16px; text-decoration: none; border-radius: 4px;
+            font-weight: bold; font-size: 0.9rem; transition: background 0.2s;
+        }
+        .btn-live:hover { background-color: #772ce8; }
+
+        /* Mobile Nav */
+        @media (max-width: 600px) {
+            .logo { font-size: 1.1rem; margin-right: 15px; }
+            nav a { margin-right: 10px; font-size: 0.9rem; }
+            .btn-live { padding: 6px 10px; font-size: 0.8rem; }
+            header { padding: 0 15px; }
+        }
+
+        /* VOD Content */
+        .archive-container { padding: 40px 20px; max-width: 1200px; margin: 0 auto; width: 100%; }
+        .page-title { font-size: 2rem; margin-bottom: 30px; text-align: center; }
+
+        .filter-bar { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; }
+        .filter-btn {
+            background-color: #1f1f23; border: 1px solid #303032; color: #efeff1;
+            padding: 10px 20px; border-radius: 20px; cursor: pointer;
+            font-weight: 600; transition: 0.2s;
+        }
+        .filter-btn:hover, .filter-btn.active { background-color: #9146FF; border-color: #9146FF; color: white; }
+
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }
+        .video-card {
+            background: #18181b; border: 1px solid #303032; border-radius: 8px;
+            overflow: hidden; transition: transform 0.2s;
+        }
+        .video-card:hover { transform: translateY(-5px); border-color: #9146FF; }
+
+        .thumbnail-container { position: relative; width: 100%; padding-bottom: 56.25%; background: black; }
+        .thumbnail-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        .video-info { padding: 15px; }
+        .video-title { font-size: 1.1rem; font-weight: bold; margin-bottom: 8px; line-height: 1.4; color: #efeff1; }
+        .video-meta { font-size: 0.85rem; color: #adadb8; display: flex; justify-content: space-between; }
+        .category-tag { color: #9146FF; font-weight: bold; text-transform: uppercase; font-size: 0.75rem; }
+    </style>
+</head>
+<body>
+
+    <a href="streams.html" class="live-banner">
+        🔴 JAKUB72 IS LIVE NOW! CLICK TO WATCH
+    </a>
+
+    <header>
+        <a href="index.html" class="logo"><span class="status-dot"></span> Jakub72</a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="streams.html">Live</a>
+            <a href="videos.html" class="active">VODs</a>
+        </nav>
+        <a href="streams.html" class="btn-live">Watch Live</a>
+    </header>
+
+    <div class="archive-container">
+        <h1 class="page-title">Video Archive</h1>
+
+        <div class="filter-bar">
+            <button class="filter-btn active" onclick="filterSelection('all')">All Videos</button>
+            <button class="filter-btn" onclick="filterSelection('metroid')">Metroid Prime 4</button>
+            <button class="filter-btn" onclick="filterSelection('smm')">Slovak Mountain Man</button>
+        </div>
+
+        <div class="video-grid">
+            <div class="video-card category-metroid">
+                <div class="thumbnail-container">
+                    <iframe src="https://www.youtube.com/embed/videoseries?list=PLHvfNVTz_9wLHagTO80AS_8_j3dfX5PxB" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">Metroid Prime 4: Beyond (Full Playlist)</div>
+                    <div class="video-meta"><span>Dec 2025</span><span class="category-tag">Metroid Prime 4</span></div>
+                </div>
+            </div>
+
+            <div class="video-card category-smm">
+                <div class="thumbnail-container">
+                    <iframe src="https://www.youtube.com/embed/VjQBPD7XlM4" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">Slovak Mountain Man joins Patreon – Eps. 50</div>
+                    <div class="video-meta"><span>Dec 2025</span><span class="category-tag">SMM</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function filterSelection(c) {
+            var x = document.getElementsByClassName("video-card");
+            var btns = document.getElementsByClassName("filter-btn");
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].classList.remove("active");
+                if (btns[i].getAttribute("onclick").includes(c)) btns[i].classList.add("active");
+            }
+            if (c == "all") c = "";
+            for (var i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+                if (x[i].className.indexOf(c) > -1) x[i].style.display = "block";
+            }
+        }
+        filterSelection('all');
+
+        // LIVE CHECK SCRIPT
+        async function checkLiveStatus() {
+            const url = 'https://decapi.me/twitch/uptime/jakub72';
+            try {
+                const response = await fetch(url);
+                const text = await response.text();
+                if (!text.includes('offline')) {
+                    document.body.classList.add('is-live');
+                }
+            } catch (err) {}
+        }
+        checkLiveStatus();
+    </script>
+
+</body>
+</html>
